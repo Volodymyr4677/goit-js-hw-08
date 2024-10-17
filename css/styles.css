@@ -1,56 +1,56 @@
- h1,
- h2,
- h3,
- h4,
- h5,
- h6,
- p {
-     margin: 0;
- }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
 
- a {
-     text-decoration: none;
-     color: inherit;
- }
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
- ul,
- ol {
-     list-style-type: none;
-     margin: 0;
-     padding: 0;
- }
+ul,
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
 
- button {
-     cursor: pointer;
- }
+button {
+    cursor: pointer;
+}
 
- img {
-     display: block;
-     max-width: 100%;
- }
+img {
+    display: block;
+    max-width: 100%;
+}
 
- .gallery {
-     display: flex;
-     flex-wrap: wrap;
-     justify-content: center;
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
-     gap: 24px;
-     margin: 0 auto;
-     padding: 24px;
+    gap: 24px;
+    margin: 0 auto;
+    padding: 24px;
 
-     max-width: 1128px;
- }
+    max-width: 1128px;
+}
 
- .gallery-item {
-     width: calc((100% - 48px) / 3);
-     transition: transform 0.5s;
- }
+.gallery-item {
+    width: calc((100% - 48px) / 3);
+    transition: transform 0.5s;
+}
 
- .gallery-item:hover,
- .gallery-item:focus {
-     transform: scale(1.05);
- }
+.gallery-item:hover,
+.gallery-item:focus {
+    transform: scale(1.05);
+}
 
- .gallery-image {
-     max-height: 200px;
- }
+.gallery-image {
+    height: auto;
+}

@@ -64,40 +64,46 @@ const images = [
   },
 ];
 
-const gallery = document.querySelector(".gallery");
-gallery.insertAdjacentHTML("beforeend", createMarkup(images));
+const galleryContainer = document.querySelector(".gallery");
 
-function createMarkup(arr) {
-  return arr
-    .map(
-      ({ preview, original, description }) =>
-        `<li class="gallery-item">
-                <a class="gallery-link" href="${original}">
-                <img
-                class="gallery-image"
-                src="${preview}"
-                data-source="${original}"
-                alt="${description}"
-                width='360'/>
-            </a>
-            </li>`
-    )
-    .join("");
-}
+const galleryMarkup = images
+  .map(
+    ({ preview, original, description }) => `
+  <li class="gallery-item">
+    <a class="gallery-link" href="${original}">
+      <img
+        class="gallery-image"
+        src="${preview}"
+        data-source="${original}"
+        alt="${description}"
+      />
+    </a>
+  </li>
+`
+  )
+  .join("");
 
-gallery.addEventListener("click", handleClick);
+galleryContainer.insertAdjacentHTML("beforeend", galleryMarkup);
 
-function handleClick(event) {
+galleryContainer.addEventListener("click", (event) => {
   event.preventDefault();
-  if (event.target.nodeName !== "IMG") {
-    return;
-  }
+
+  if (event.target.nodeName !== "IMG") return;
+
+  const originalImage = event.target.dataset.source;
+  console.log(originalImage);
+});
+
+galleryContainer.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  if (event.target.nodeName !== "IMG") return;
+
+  const originalImage = event.target.dataset.source;
 
   const instance = basicLightbox.create(`
-        <div class="modal">
-            <img src="${event.target.dataset.source}" alt="${event.target.alt}" width="1280">
-        </div>
-    `);
+    <img src="${originalImage}" width="800" height="600">
+  `);
 
   instance.show();
-}
+});
