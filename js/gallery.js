@@ -64,15 +64,40 @@ const images = [
   },
 ];
 
-import * as basicLightbox from "basiclightbox";
+const gallery = document.querySelector(".gallery");
+gallery.insertAdjacentHTML("beforeend", createMarkup(images));
 
-const instance = basicLightbox.create(`
-    <div class="modal">
-        <p>
-            Your first lightbox with just a few lines of code.
-            Yes, it's really that simple.
-        </p>
-    </div>
-`);
+function createMarkup(arr) {
+  return arr
+    .map(
+      ({ preview, original, description }) =>
+        `<li class="gallery-item">
+                <a class="gallery-link" href="${original}">
+                <img
+                class="gallery-image"
+                src="${preview}"
+                data-source="${original}"
+                alt="${description}"
+                width='360'/>
+            </a>
+            </li>`
+    )
+    .join("");
+}
 
-instance.show();
+gallery.addEventListener("click", handleClick);
+
+function handleClick(event) {
+  event.preventDefault();
+  if (event.target.nodeName !== "IMG") {
+    return;
+  }
+
+  const instance = basicLightbox.create(`
+        <div class="modal">
+            <img src="${event.target.dataset.source}" alt="${event.target.alt}" width="1280">
+        </div>
+    `);
+
+  instance.show();
+}
