@@ -20,13 +20,10 @@ ol {
     padding: 0;
 }
 
-button {
-    cursor: pointer;
-}
-
 img {
     display: block;
     max-width: 100%;
+    cursor: zoom-in;
 }
 
 .gallery {
@@ -49,6 +46,7 @@ img {
 .gallery-item:hover,
 .gallery-item:focus {
     transform: scale(1.05);
+
 }
 
 .gallery-image {
